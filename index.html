@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Los Santos Freshers'25 - GTA 3 Themed Party | 2nd Nov | Raahi Neo Kitchen & Bar">
+  <meta property="og:title" content="Los Santos Freshers'25">
+  <meta property="og:description" content="Experience the neon streets of Vice City | 2nd November at Raahi Neo Kitchen & Bar">
+  <meta property="og:image" content="/assets/og-image.jpg">
+  <title>Los Santos Freshers'25 - GTA Themed Party</title>
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Google Fonts: Playfair Display for headings and Poppins for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Google Fonts: Pricedown GTA Font -->
+  <link href="https://fonts.cdnfonts.com/css/pricedown" rel="stylesheet">
+  
+  <!-- GSAP Animation Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+  <!-- ============ HERO SECTION ============ -->
+  <section id="hero" class="hero">
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-content">
+      <div class="hero-text-container">
+        <h1 class="hero-title gta-title">
+          LOS SANTOS<br>FRESHERS'25
+        </h1>
+        
+        <div class="hero-details">
+          <p class="detail-line detail-date">2ND NOVEMBER, SATURDAY</p>
+          <p class="detail-line detail-time">2 PM ONWARDS</p>
+          <p class="detail-line detail-venue">Raahi Neo Kitchen & Bar</p>
+        </div>
+
+        <div class="hero-cta-wrapper">
+          <button class="btn btn-primary" id="heroBtn" onclick="handleCTAClick()">
+            BUY PASSES
+          </button>
+          <div class="tooltip" id="tooltip" style="display: none;">
+            Tickets live 5th Nov 5 PM
+          </div>
+        </div>
+
+        <!-- Info Pills -->
+        <div class="pill-container">
+          <div class="pill">
+            <span class="pill-icon">📅</span>
+            <span>2nd Nov, 2 PM</span>
+          </div>
+          <div class="pill">
+            <span class="pill-icon">📍</span>
+            <span>Raahi Neo Kitchen</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SINGLE VIDEO SECTION ============ -->
+  <section class="single-video-section">
+    <video autoplay loop muted playsinline class="full-width-video">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+  </section>
+
+  <!-- ============ ABOUT SECTION ============ -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2 class="section-title">ABOUT THE PARTY</h2>
+      
+      <p class="about-text">
+        Step into the neon-lit streets of Los Santos for the ultimate GTA-themed freshers' party. 
+        Experience the underground vibes, street beats, and cinematic energy of Vice City brought to life.
+      </p>
+
+      <div class="cta-wrapper">
+        <button class="btn btn-secondary" id="aboutBtn" onclick="handleCTAClick()">
+          BUY TICKETS
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COUNTDOWN SECTION ============ -->
+  <section id="countdown" class="countdown">
+    <div class="container">
+      <h2 class="section-title gta-title" id="countdownTitle">EARLY BIRD TICKETS LAUNCHING IN...</h2>
+
+      <div class="countdown-display" id="countdownDisplay">
+        <div class="countdown-box">
+          <div class="countdown-number" id="days">00</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-number" id="hours">00</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-number" id="minutes">00</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-number" id="seconds">00</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ SECTION ============ -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <h2 class="section-title">FREQUENTLY ASKED</h2>
+
+      <div class="faq-container">
+        <!-- FAQ Item 1 -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">
+            <span>Is this an official college event?</span>
+            <span class="faq-toggle">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>No, Los Santos Freshers'25 is an unofficial student-organized event. The college management is not involved in organizing or endorsing this party.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">
+            <span>How do I get tickets?</span>
+            <span class="faq-toggle">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>Tickets will go live on 5th November at 5 PM IST. Early bird tickets will be available at a discounted rate. Click the "Buy Passes" button when the countdown ends.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">
+            <span>What's the dress code?</span>
+            <span class="faq-toggle">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>GTA-themed street style! Think urban, edgy, neon accents. Rock your best Vice City or Los Santos-inspired outfit. Casual street wear is perfectly fine too.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">
+            <span>Are there any entry restrictions?</span>
+            <span class="faq-toggle">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>Entry is open to all students with valid college IDs. Age restrictions apply as per venue policy (18+). Please carry a valid government ID for verification.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 5 -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">
+            <span>Can non-BIT students attend?</span>
+            <span class="faq-toggle">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes! Non-BIT students are welcome. Just bring your valid student/government ID and your ticket. The more the merrier in Los Santos!</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 6 -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">
+            <span>What if I need a refund?</span>
+            <span class="faq-toggle">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>Refunds are available up to 24 hours before the event. Contact us via Instagram DM @bit_freshers_2025 with your ticket details. No refunds on the event day.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <a href="https://instagram.com/bit_freshers_2025" target="_blank" class="social-link">
+        <span>📸</span>
+        @bit_freshers_2025
+      </a>
+
+      <div class="neon-divider"></div>
+
+      <p class="disclaimer">
+        <strong>Disclaimer:</strong> This is an unofficial event organized by BIT students. 
+        The college management is not involved in organizing or responsible for this event.
+      </p>
+
+      <p class="copyright">
+        © 2025 Los Santos Freshers'25. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

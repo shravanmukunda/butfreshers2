@@ -1,0 +1,654 @@
+/* ============================================
+   GLOBAL STYLES & CSS VARIABLES
+   ============================================ */
+
+:root {
+  --color-neon-pink: #ff1493;
+  --color-electric-blue: #00d4ff;
+  --color-deep-purple: #1a0033;
+  --color-black: #000;
+  --color-white: #fff;
+  --glow-low: 10px;
+  --glow-med: 20px;
+  --glow-high: 30px;
+  --transition-default: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Scrollbar Styling */
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Neon Glow Effects */
+.neon-glow {
+  box-shadow: 
+    0 0 10px var(--color-neon-pink),
+    0 0 20px var(--color-neon-pink),
+    0 0 30px var(--color-neon-pink);
+}
+
+.neon-glow-strong {
+  box-shadow: 
+    0 0 15px var(--color-neon-pink),
+    0 0 30px var(--color-neon-pink),
+    0 0 45px var(--color-neon-pink),
+    0 0 60px var(--color-neon-pink);
+}
+
+.neon-glow-text {
+  text-shadow: 
+    0 0 10px var(--color-neon-pink),
+    0 0 20px var(--color-neon-pink);
+}
+
+/* GTA Text Shadow */
+.gta-title {
+  text-shadow: 
+    4px 4px 0px var(--color-black),
+    -2px -2px 0px var(--color-black),
+    2px -2px 0px var(--color-black),
+    -2px 2px 0px var(--color-black);
+}
+
+/* Flicker Animation */
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow:
+      0 0 10px var(--color-neon-pink),
+      0 0 20px var(--color-neon-pink),
+      0 0 30px var(--color-neon-pink),
+      0 0 40px var(--color-neon-pink);
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+.flicker {
+  animation: flicker 2s infinite alternate;
+}
+
+/* Slide in Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.6s ease-out forwards;
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 100px;
+  background-image: url('assets/gta-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 1)
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.hero-text-container {
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.3s forwards;
+}
+
+.hero-title {
+  font-family: 'Pricedown Bl', sans-serif;
+  font-size: clamp(60px, 15vw, 150px);
+  color: var(--color-white);
+  margin-bottom: 30px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  line-height: 0.9;
+  text-shadow: 
+    4px 4px 0px var(--color-black),
+    -2px -2px 0px var(--color-black),
+    2px -2px 0px var(--color-black),
+    -2px 2px 0px var(--color-black);
+}
+
+.hero-details {
+  margin-bottom: 30px;
+}
+
+.detail-line {
+  font-size: clamp(16px, 4vw, 24px);
+  margin: 10px 0;
+  font-weight: 600;
+  opacity: 0;
+  animation: slideIn 0.6s ease-out forwards;
+}
+
+.detail-line:nth-child(1) {
+  color: var(--color-neon-pink);
+  animation-delay: 0.4s;
+}
+
+.detail-line:nth-child(2) {
+  color: var(--color-electric-blue);
+  animation-delay: 0.6s;
+}
+
+.detail-line:nth-child(3) {
+  color: rgba(255, 255, 255, 0.9);
+  animation-delay: 0.8s;
+}
+
+.hero-cta-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: slideIn 0.6s ease-out 1s forwards;
+}
+
+.tooltip {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+  background: rgba(26, 0, 51, 0.95);
+  border: 2px solid var(--color-neon-pink);
+  color: var(--color-white);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  z-index: 100;
+}
+
+/* Pills Container */
+.pill-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  opacity: 0;
+  animation: slideIn 0.6s ease-out 1.2s forwards;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid var(--color-electric-blue);
+  border-radius: 50px;
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  transition: var(--transition-default);
+  font-family: 'Poppins', sans-serif;
+}
+
+.pill:hover {
+  border-color: var(--color-neon-pink);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.pill-icon {
+  font-size: 18px;
+}
+
+/* ============================================
+   SINGLE VIDEO SECTION
+   ============================================ */
+
+.single-video-section {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.full-width-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn {
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition-default);
+  letter-spacing: 1px;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn-primary {
+  border: 4px solid var(--color-neon-pink);
+  color: var(--color-neon-pink);
+  background: transparent;
+  box-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-neon-pink);
+  color: var(--color-black);
+  box-shadow: 0 0 30px var(--color-neon-pink),
+              0 0 60px var(--color-neon-pink);
+  transform: scale(1.05);
+}
+
+.btn-primary:disabled {
+  border-color: rgba(100, 100, 100, 0.5);
+  color: rgba(100, 100, 100, 0.5);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn-secondary {
+  background: var(--color-neon-pink);
+  color: var(--color-black);
+  border: none;
+  box-shadow: 0 0 20px var(--color-neon-pink);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--color-electric-blue);
+  box-shadow: 0 0 30px var(--color-electric-blue),
+              0 0 60px var(--color-electric-blue);
+  transform: scale(1.05);
+}
+
+.btn-secondary:disabled {
+  background: rgba(100, 100, 100, 0.5);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ============================================
+   ABOUT SECTION
+   ============================================ */
+
+.about {
+  background: linear-gradient(135deg, var(--color-black), var(--color-deep-purple));
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-family: 'Pricedown Bl', sans-serif;
+  font-size: clamp(36px, 8vw, 64px);
+  color: var(--color-white);
+  margin-bottom: 30px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 4px 4px 0px var(--color-black),
+               -2px -2px 0px var(--color-black);
+}
+
+.about-text {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  font-size: 18px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.cta-wrapper {
+  margin-bottom: 60px;
+}
+
+/* ============================================
+   COUNTDOWN SECTION
+   ============================================ */
+
+.countdown {
+  background: linear-gradient(135deg, var(--color-deep-purple), var(--color-black));
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.countdown-display {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+  margin-top: 40px;
+}
+
+.countdown-box {
+  background: rgba(0, 0, 0, 0.6);
+  border: 3px solid var(--color-electric-blue);
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 100px;
+  backdrop-filter: blur(10px);
+  transition: var(--transition-default);
+  flex-shrink: 0;
+}
+
+.countdown-box:hover {
+  border-color: var(--color-neon-pink);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.countdown-number {
+  font-family: 'Playfair Display', 'Times New Roman', serif;
+  font-size: 48px;
+  color: var(--color-neon-pink);
+  margin-bottom: 5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.countdown-label {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ============================================
+   FAQ SECTION
+   ============================================ */
+
+.faq {
+  background: linear-gradient(135deg, var(--color-black), var(--color-deep-purple));
+  padding: 80px 20px;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: 'Pricedown Bl', sans-serif;
+  font-size: clamp(36px, 8vw, 64px);
+  color: var(--color-white);
+  margin-bottom: 30px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 4px 4px 0px var(--color-black),
+               -2px -2px 0px var(--color-black);
+}
+
+.faq-item {
+  margin-bottom: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 20px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-white);
+  transition: var(--transition-default);
+  font-family: 'Poppins', sans-serif;
+}
+
+.faq-question:hover {
+  background: rgba(255, 20, 147, 0.1);
+}
+
+.faq-question.active {
+  background: rgba(255, 20, 147, 0.2);
+  border-bottom: 2px solid var(--color-neon-pink);
+}
+
+.faq-toggle {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.faq-question.active .faq-toggle {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.faq-answer.open {
+  max-height: 500px;
+  padding: 20px;
+}
+
+.faq-answer p {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+  background: var(--color-black);
+  padding: 60px 20px 30px;
+  text-align: center;
+  border-top: 2px solid var(--color-neon-pink);
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  color: var(--color-white);
+  text-decoration: none;
+  margin-bottom: 30px;
+  transition: var(--transition-default);
+  font-family: 'Poppins', sans-serif;
+}
+
+.social-link:hover {
+  color: var(--color-neon-pink);
+  text-shadow: 0 0 10px var(--color-neon-pink);
+}
+
+.neon-divider {
+  width: 100px;
+  height: 3px;
+  background: var(--color-neon-pink);
+  margin: 30px auto;
+  box-shadow: 0 0 10px var(--color-neon-pink);
+}
+
+.disclaimer {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 20px;
+  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 50px;
+  }
+  
+  .hero-title {
+    font-size: clamp(40px, 12vw, 100px);
+  }
+  
+  .detail-line {
+    font-size: clamp(14px, 4vw, 20px);
+  }
+  
+  .countdown-box {
+    min-width: 80px;
+    padding: 15px 10px;
+  }
+  
+  .countdown-number {
+    font-size: 32px;
+  }
+  
+  .countdown-label {
+    font-size: 12px;
+  }
+  
+  .faq-question {
+    font-size: 16px;
+    padding: 15px;
+  }
+  
+  .pill-container {
+    gap: 10px;
+  }
+  
+  .pill {
+    padding: 8px 15px;
+    font-size: 12px;
+  }
+  
+  .pill-icon {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 30px;
+  }
+  
+  .hero-title {
+    font-size: clamp(36px, 12vw, 80px);
+  }
+  
+  .countdown-display {
+    gap: 10px;
+  }
+  
+  .countdown-box {
+    min-width: 70px;
+    padding: 10px 5px;
+  }
+  
+  .countdown-number {
+    font-size: 24px;
+  }
+  
+  .countdown-label {
+    font-size: 10px;
+  }
+}
