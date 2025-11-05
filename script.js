@@ -4,11 +4,11 @@
 
 const CONFIG = {
   launchDate: new Date('2025-11-05T17:00:00+05:30'),
-  ticketURL: 'https://your-ticket-link.com'
+  ticketURL: 'https://rzp.io/rzp/LkjUN81'
 };
 
 let state = {
-  ticketsLive: false
+  ticketsLive: true
 };
 
 // ============================================
