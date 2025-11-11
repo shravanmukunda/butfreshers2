@@ -3,7 +3,7 @@
 // ============================================
 
 const CONFIG = {
-  launchDate: new Date('2025-11-05T17:00:00+05:30'),
+  launchDate: new Date('2025-11-15T14:00:00+05:30'),
   ticketURL: 'https://rzp.io/rzp/LkjUN81'
 };
 
